@@ -1,0 +1,38 @@
+{
+    "name" : "Pepe",
+    "surname": "Pérez",
+    "password" : "Pepe123456",
+    "email":"simyo@paradigmadigital.com",
+    "birthDate": {
+        "day": "01",
+        "month":"Enero",
+        "year":"1990"
+    },
+    "contactPhone":"687608254",
+    "nationality":"España",
+    "address": {
+        "type": "CALLE",
+        "addressLine": "Burgos",
+        "number": "7",
+        "postalCode": "28039",
+        "city": "Madrid",
+        "province": "Madrid"
+    },
+    "creditCard": {
+        "user": "Pepe Pérez Pérez",
+        "type": "Visa",
+        "num1": "4548",
+        "num2": "8120",
+        "num3": "4940",
+        "num4": "0004",
+        "expDate_Month": "12",
+        "expDate_Year": "21",
+        "cvv": "123"
+    },
+    "bankAccount": {
+        "num1": "3582",
+        "num2": "2312",
+        "num3": "18",
+        "num4": "9674284354"
+    }
+}

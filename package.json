@@ -1,0 +1,38 @@
+{
+  "name": "simyo_3_0",
+  "version": "1.0.0",
+  "description": "## Versiones  - Tomcat 9  - jdk 1.8.0_231",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-json": "^3.0.0",
+    "husky": "^6.0.0",
+    "is-installed-globally": "^0.4.0",
+    "mochawesome": "^6.2.2"
+  },
+  "devDependencies": {
+    "cypress": "^7.3.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "prettier": "^2.3.0"
+  },
+  "scripts": {
+    "cypress:ci": "cypress run",
+    "cypress:open": "npx cypress open",
+    "lint": "eslint --fix C:\\pd\\tests-e2e\\cypress\\**"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "author": "",
+  "license": "ISC"
+}

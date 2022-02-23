@@ -1,0 +1,38 @@
+#!groovy
+
+node('docker-jenkinsslave-nodejs-gulp-bower') {
+
+  env.PATH="${env.PATH}:/home/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NODEJS_14.15.0/bin"
+ 
+  parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  }
+
+  stage("Install Dependencies") {
+
+    //Instalaciones necesarias varias
+    sh "env | sort"
+    sh """
+    echo 'jenkins' | sudo -S pwd;
+    sudo apt-get update
+    sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb firefox chromium-browser
+    """    
+    //Clonado del repositorio
+    checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '${BRANCH}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2WjisRWywLgtzHPhtYaL', url: 'git@git.paradigmadigital.com:simyo/tests-e2e.git']]]      
+    //Instalacion de dependencias del proyecto
+    sh "npm install"
+  }
+
+  stage("Run Tests") {
+
+    sh """
+    echo 'jenkins' | sudo -S pwd;
+    PATH=$PATH:/nodejs/bin;
+    if [ "${params.Tests}" != "Todos" ]; then
+    npx cypress run --config-file=cypress-${params.Entorno}.json --spec "cypress/integration/${params.Tests}/*.spec.js" --browser ${params.Navegador} --headless
+    else
+    npx cypress run --config-file=cypress-${params.Entorno}.json --browser ${params.Navegador} --headless
+    fi
+    """
+  }
+}

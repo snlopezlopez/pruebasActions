@@ -1,0 +1,14 @@
+{
+    "extends": "./cypress.json",
+    "env": {
+        "api_tokenEndpoint": "",
+        "api_baseEndpoint":"",
+        "web_baseUrl": "https://pre4-www.simyo.es/",
+        "api_grant_type": "",
+        "api_username": "",
+        "api_password": "",
+        "api_client_id": "",
+        "api_client_secret":""
+    }
+  }
+  
